@@ -5,12 +5,13 @@ import type {
   NextApiResponse as Response,
 } from "next";
 import nc from "next-connect";
+// const Resemble = require("@resemble/node");
 
 const { serverRuntimeConfig } = getConfig();
 
 const key = serverRuntimeConfig.OAI_KEY;
-
-console.log("KEY", key);
+// const resembleKey = serverRuntimeConfig.RESEMBLE_KEY;
+// const resemble = new Resemble("v2", resembleKey);
 
 const config = new Configuration({
   apiKey: key,
@@ -24,15 +25,19 @@ handler.post(async (req: Request, res: Response) => {
   if (!req.body) return res.status(400).json({ error: "No user input" });
   const userInput = req.body.userInput;
   try {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: userInput,
-    });
-    if (response.data.choices[0].text === "") {
-      return res.status(200).json({ error: "No response from AI" });
-    }
-    console.log("text", response.data.choices[0].text);
-    return res.status(200).json({ response: response.data.choices[0].text });
+    // TODO: TURN BACK ON ONCE TESTING IS DONE
+    // const response = await openai.createChatCompletion({
+    //   model: "gpt-3.5-turbo",
+    //   // @ts-ignore
+    //   messages: [{ role: "user", content: userInput }],
+    // });
+    // if (!response) {
+    //   return res.status(200).json({ error: "No response from AI" });
+    // }
+    // console.log("text", response?.data?.choices[0]?.message?.content);
+    return res.status(200).json({ response: "TEST RESPONSE" });
+    // TODO: HERE TOO
+    // .json({ response: response?.data?.choices[0]?.message?.content });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Internal Server Error" });

@@ -60,3 +60,13 @@
     transition: all 0.2s ease-in-out;
 
 }
+
+.aiMessageContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    transition: all 0.2s ease-in-out;
+}

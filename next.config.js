@@ -2,10 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   publicRuntimeConfig: {
-    OAI_KEY: process.env.OAI_KEY,
+    RESEMBLE_KEY: process.env.RESEMBLE_KEY,
+    RESEMBLE_PROJECT_ID: process.env.RESEMBLE_PROJECT_ID,
   },
   serverRuntimeConfig: {
     OAI_KEY: process.env.OAI_KEY,
+    RESEMBLE_KEY: process.env.RESEMBLE_KEY,
   },
 };
 
